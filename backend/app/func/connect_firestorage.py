@@ -1,5 +1,6 @@
 import os
 import time
+import traceback
 
 try:
     from ..settings.firebase import bucket
@@ -55,6 +56,7 @@ def download_bucket_file(source_filename, download_filename, logger):
         blob.download_to_filename(download_filename)
     except:  # firebaseにファイルが存在しない場合（初めてのユーザー）
         logger.info('{} does not exist'.format(download_filename))
+        logger.error(traceback.format_exc())
         if os.path.exists(source_filename):
             # ローカルのディレクトリを削除する
             os.remove(source_filename)

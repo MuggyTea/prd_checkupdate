@@ -44,9 +44,15 @@ newlinks = set()
 #     # aタグからリンクのURLのみを取り出す。
 #     links.append(tag.get('href'))
 try:
+    # 今回取得したリンクを記録する（上書き）
+    with open(logfile_name, 'wb') as beforef:
+        # ファイルをダウンロードする
+        # download_bucket_file(logfile_name, logfile_name, logger)
+        download_bucket_file(logfile_name, logfile_name, logger)
     if os.path.exists(str(logfile_name)):
         # 前回取得したリンクをファイルから読み込む
         with open(logfile_name, 'r') as f:
+            logger.info("ファイル"+ str(f))
             # 前回のリンクにセット
             oldlinks = set(f)
             # reader = csv.reader(f)
@@ -58,7 +64,9 @@ try:
         # 今回取得したリンクを記録する（上書き）
         with open(logfile_name, 'w') as f:
             f.write(str(soup))
-            oldlinks = set(f)
+        upload_bucket_file(logfile_name, logfile_name, "text/plain", logger)
+        with open(logfile_name, 'r') as oldf:
+            oldlinks = set(oldf)
             logger.info("oldlinks" + str(oldlinks))
 except:
     # 何かしら失敗した場合はLINEに通知、ログ
@@ -70,6 +78,9 @@ try:
     # 今回取得したリンクを記録する（上書き）
     with open(logfile_name, 'w') as f:
         f.write(str(soup))
+    upload_bucket_file(logfile_name, logfile_name, "text/plain", logger)
+    # ファイルをダウンロードする
+    # download_bucket_file(logfile_name, logfile_name, logger)
     with open(logfile_name, 'r') as newf:
         newlinks = set(newf)
     logger.info("newlinks" + str(newlinks))
