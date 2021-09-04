@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+backend/app/settings/config_file.py
+tmp
+backend/app/settings/pic2force-firebase-adminsdk-s0gcr-aaabf563e2.json
+app.yaml
+.history/
