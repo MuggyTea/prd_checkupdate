@@ -1,0 +1,6 @@
+cron:
+- description: check_sanres
+  url: /check_sanres
+  schedule: every 1 minutes
+  timezone: Asia/Tokyo
+  target: default
