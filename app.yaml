@@ -1,0 +1,29 @@
+runtime: python37
+
+env: standard
+instance_class: F1
+
+# env-variables:
+#   BUCKET_NAME: "pic2force.appspot.com"
+
+# service_account: "firebase-adminsdk-s0gcr@pic2force.iam.gserviceaccount.com"
+
+handlers:
+# - url: ./*
+#   static_dir: dist/static
+# - url: ./*
+  - url: /check_sanres
+    script: main.py
+    login: admin
+# - url: ./*
+#   static_files: dist/index.html
+# entrypoint: gunicorn -b 8080 run:app
+
+automatic_scaling:
+  target_cpu_utilization: 0.70
+  min_instances: 1
+  max_instances: 1
+  min_idle_instances: 1
+  max_idle_instances: 1
+  min_pending_latency: 3000ms
+  max_pending_latency: automatic
