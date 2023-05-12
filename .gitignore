@@ -130,10 +130,12 @@ dmypy.json
 backend/app/settings/config_file.py
 tmp
 backend/app/settings/pic2force-firebase-adminsdk-s0gcr-aaabf563e2.json
-app.yam
+app.yaml
 gcf-packs/pandas_numpy
 gcf-packs/tensorflow2.0
 gcf-packs/README.md
 gcf-packs/tensorflow2.0/example
 gcf-packs/tensorflow2.0/pack.zip
-.history/*
+gcf-packs/selenium_chrome/pack.zip
+.history
+.DS_Store
