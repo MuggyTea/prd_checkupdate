@@ -139,3 +139,5 @@ gcf-packs/tensorflow2.0/pack.zip
 gcf-packs/selenium_chrome/pack.zip
 .history
 .DS_Store
+.deploy
+gcf-packs/selenium_chrome/source/.deploy
